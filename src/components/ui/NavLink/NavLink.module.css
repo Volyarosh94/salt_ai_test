@@ -1,0 +1,66 @@
+.link {
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-family-primary);
+  font-size: clamp(12px, 0.94vw, 16px);
+  font-weight: 400;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.text {
+  color: var(--color-text-primary);
+  transition: opacity var(--transition-base);
+}
+
+.textGradient {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: linear-gradient(135deg, #B53EA4, #FC6F32, #FF4A59);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  pointer-events: none;
+}
+
+.link:hover .text {
+  opacity: 0;
+}
+
+.link:hover .textGradient {
+  opacity: 1;
+}
+
+.link:focus-visible {
+  outline: 2px solid var(--color-gradient-2);
+  outline-offset: 4px;
+  border-radius: var(--border-radius-sm);
+}
+
+@media (max-width: 1024px) {
+  .link {
+    font-size: clamp(12px, 1.56vw, 15px);
+  }
+}
+
+@media (max-width: 768px) {
+  .link {
+    font-size: clamp(11px, 2.08vw, 14px);
+  }
+}
+
+@media (max-width: 480px) {
+  .link {
+    font-size: clamp(10px, 2.5vw, 12px);
+  }
+}
+
+@media (max-width: 360px) {
+  .link {
+    font-size: 10px;
+  }
+}
+

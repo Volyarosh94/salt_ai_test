@@ -1,0 +1,9 @@
+.main {
+  position: relative;
+}
+
+.heroWrapper {
+  position: relative;
+  min-height: 300vh;
+}
+

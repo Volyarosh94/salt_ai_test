@@ -1,0 +1,974 @@
+.hero {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  min-height: clamp(600px, 100vh, 800px);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: #000000;
+}
+
+.background {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.moonLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.moon {
+  position: absolute;
+  width: 1016px;
+  height: 1016px;
+  top: 100.02px;
+  left: 970.02px;
+  object-fit: contain;
+  pointer-events: none;
+  transition: top 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero.projectsVisible .moon {
+  top: 0.02px;
+}
+
+@media (max-width: 1400px) {
+  .hero.projectsVisible .moon {
+    top: clamp(-50px, -3.57vw, 0px);
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero.projectsVisible .moon {
+    top: clamp(-50px, -4.88vw, 0px);
+  }
+}
+
+@media (max-width: 770px) {
+  .hero.projectsVisible .moon {
+    top: auto;
+    bottom: clamp(50px, 6.51vw, 100px);
+  }
+}
+
+.blurLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  isolation: isolate;
+}
+
+.blurBlue {
+  position: absolute;
+  width: clamp(300px, 26.29vw, 504.81px);
+  height: clamp(450px, 41.45vw, 795.74px);
+  top: clamp(-200px, -10.42vw, -100px);
+  left: clamp(200px, 18.27vw, 350.83px);
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.blurOrange {
+  position: absolute;
+  width: clamp(300px, 26.29vw, 504.81px);
+  height: clamp(450px, 41.45vw, 795.74px);
+  top: clamp(400px, 28.13vw, 540px);
+  left: clamp(-50px, -1.04vw, -20px);
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 10;
+  padding: 0 60px;
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 1;
+}
+
+.hero.scrolled .content {
+  transform: translateY(clamp(-8vh, -10vh, -10vh));
+}
+
+.hero.projectsVisible .content {
+  transform: translateY(-150vh);
+  opacity: 0;
+}
+
+@media (max-width: 770px) {
+  .hero.scrolled .content {
+    transform: translateY(clamp(-5vh, -8vh, -10vh));
+  }
+}
+
+@media (max-width: 480px) {
+  .hero.scrolled .content {
+    transform: translateY(clamp(-3vh, -5vh, -8vh));
+  }
+}
+
+.title {
+  margin-bottom: 32px;
+  display: block;
+  max-width: none;
+  overflow: visible;
+}
+
+
+.titleLine {
+  display: block;
+  white-space: nowrap;
+  overflow: visible;
+}
+
+.subtitle {
+  font-family: var(--font-family-primary);
+  font-size: clamp(14px, 0.94vw, 18px);
+  font-weight: 400;
+  line-height: 160%;
+  color: var(--color-text-primary);
+  max-width: clamp(500px, 41.67vw, 800px);
+  margin-bottom: clamp(24px, 2.08vw, 40px);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 1.67vw, 32px);
+  flex-wrap: wrap;
+}
+
+.tryNow {
+  font-size: clamp(12px, 0.83vw, 16px);
+  font-weight: 400;
+}
+
+.statistics {
+  position: absolute;
+  bottom: 80px;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  width: 100%;
+  padding: 0 80px;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.statistics.visible {
+  pointer-events: auto;
+}
+
+.statsContainer {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+@media (max-width: 770px) {
+  .statsContainer {
+    justify-content: center;
+  }
+}
+
+.statCard {
+  width: 564.32px;
+  height: 190px;
+  border-radius: 91px;
+  padding: 32px;
+  background: linear-gradient(135deg, rgba(150, 52, 136, 0.2) 0%, rgba(252, 111, 50, 0.2) 50%, rgba(255, 74, 89, 0.2) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(200px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.statistics.visible .statCard {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero.projectsVisible .statistics {
+  opacity: 0;
+  transform: translateY(-100vh);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.statValue {
+  font-family: var(--font-inter);
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #ffffff;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.statLabel {
+  font-family: var(--font-inter);
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #ffffff;
+  text-align: center;
+}
+
+.projectsContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 15;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 clamp(40px, 4.17vw, 80px);
+  opacity: 0;
+  transform: translateY(100vh);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.projectsContent.projectsVisible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.projectsWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1920px;
+}
+
+.projectsTitle {
+  font-family: var(--font-family-primary);
+  font-weight: 500;
+  font-size: clamp(32px, 3.33vw, 64px);
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 48px;
+  margin-top: 0;
+}
+
+.projectsLogosContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(40px, 6.25vw, 120px);
+  flex-wrap: nowrap;
+  width: 100%;
+  padding: 0 80px;
+}
+
+.projectsLogoItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateX(200px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.projectsContent.projectsVisible .projectsLogoItem {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.projectsContent.projectsVisible .projectsLogoItem:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.projectsContent.projectsVisible .projectsLogoItem:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.projectsContent.projectsVisible .projectsLogoItem:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+.projectsContent.projectsVisible .projectsLogoItem:nth-child(4) {
+  transition-delay: 0.4s;
+}
+
+.projectsContent.projectsVisible .projectsLogoItem:nth-child(5) {
+  transition-delay: 0.5s;
+}
+
+.projectsLogo {
+  object-fit: contain;
+  height: auto;
+  width: auto;
+  max-width: 200px;
+  max-height: 60px;
+}
+
+.projectsLogoItem[data-logo="Ionic"] .projectsLogo {
+  filter: none !important;
+}
+
+.projectsLogoItem:first-child .projectsLogo {
+  filter: none !important;
+}
+
+.projectsLogoItem:not(:first-child):not([data-logo="Ionic"]) .projectsLogo {
+  filter: brightness(0) invert(1);
+}
+
+@media (max-width: 1920px) {
+  .moon {
+    width: clamp(600px, 52.92vw, 1016px);
+    height: clamp(600px, 52.92vw, 1016px);
+    left: clamp(600px, 50.52vw, 970px);
+  }
+
+  .blurBlue {
+    width: clamp(300px, 26.29vw, 504.81px);
+    height: clamp(450px, 41.45vw, 795.74px);
+  }
+
+  .blurOrange {
+    width: clamp(300px, 26.29vw, 504.81px);
+    height: clamp(450px, 41.45vw, 795.74px);
+  }
+}
+
+@media (max-width: 1600px) {
+  .content {
+    padding: 0 clamp(40px, 3.75vw, 60px);
+  }
+
+  .statistics {
+    padding: 0 clamp(40px, 5vw, 80px);
+  }
+
+  .moon {
+    width: clamp(500px, 50vw, 800px);
+    height: clamp(500px, 50vw, 800px);
+    left: auto;
+    right: clamp(-300px, -12.5vw, -200px);
+  }
+
+  .blurBlue {
+    width: clamp(350px, 31.25vw, 450px);
+    height: clamp(525px, 46.88vw, 675px);
+    left: clamp(150px, 12.5vw, 250px);
+  }
+
+  .blurOrange {
+    width: clamp(350px, 31.25vw, 450px);
+    height: clamp(525px, 46.88vw, 675px);
+  }
+}
+
+@media (max-width: 1400px) {
+  .blurBlue {
+    width: clamp(300px, 28.57vw, 400px);
+    height: clamp(450px, 42.86vw, 600px);
+    left: clamp(100px, 14.29vw, 200px);
+  }
+
+  .moon {
+    width: clamp(450px, 50vw, 700px);
+    height: clamp(450px, 50vw, 700px);
+    right: clamp(-350px, -17.86vw, -250px);
+    top: clamp(100px, 10.71vw, 150px);
+  }
+
+  .blurOrange {
+    width: clamp(300px, 28.57vw, 400px);
+    height: clamp(450px, 42.86vw, 600px);
+  }
+
+  .statCard {
+    width: clamp(280px, 40.31vw, 564.32px);
+    padding: clamp(24px, 2.29vw, 32px);
+  }
+
+  .statValue {
+    font-size: clamp(40px, 4.57vw, 64px);
+  }
+
+  .statLabel {
+    font-size: clamp(18px, 1.71vw, 24px);
+  }
+}
+
+@media (max-width: 1200px) {
+  .content {
+    padding: 0 clamp(32px, 3.33vw, 40px);
+  }
+
+  .statistics {
+    padding: 0 clamp(32px, 3.33vw, 40px);
+    bottom: clamp(50px, 5vw, 60px);
+  }
+
+  .moon {
+    width: clamp(400px, 41.67vw, 500px);
+    height: clamp(400px, 41.67vw, 500px);
+    right: clamp(-200px, -12.5vw, -150px);
+    top: clamp(150px, 16.67vw, 200px);
+  }
+
+  .blurBlue {
+    width: clamp(250px, 25vw, 300px);
+    height: clamp(375px, 37.5vw, 450px);
+    left: clamp(50px, 8.33vw, 100px);
+    top: clamp(-250px, -20.83vw, -200px);
+  }
+
+  .blurOrange {
+    width: clamp(250px, 25vw, 300px);
+    height: clamp(375px, 37.5vw, 450px);
+  }
+
+  .statCard {
+    width: clamp(240px, 30vw, 400px);
+    border-radius: clamp(50px, 5.86vw, 70px);
+    padding: clamp(20px, 2.5vw, 28px);
+  }
+
+  .statValue {
+    font-size: clamp(36px, 4vw, 56px);
+    margin-bottom: clamp(12px, 1.33vw, 16px);
+  }
+
+  .statLabel {
+    font-size: clamp(16px, 1.67vw, 22px);
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    min-height: clamp(600px, 100vh, 800px);
+  }
+
+  .content {
+    padding: 0 clamp(24px, 3.91vw, 40px);
+  }
+
+  .projectsContent {
+    padding: 0 clamp(24px, 3.91vw, 40px);
+  }
+
+  .projectsTitle {
+    margin-bottom: clamp(32px, 4.69vw, 48px);
+  }
+
+  .projectsLogosContainer {
+    gap: clamp(32px, 4.69vw, 80px);
+    padding: 0 clamp(24px, 3.91vw, 80px);
+  }
+
+  .subtitle {
+    font-size: clamp(16px, 1.76vw, 18px);
+    max-width: clamp(500px, 65.63vw, 800px);
+  }
+
+  .actions {
+    gap: clamp(20px, 3.13vw, 32px);
+  }
+
+  .statistics {
+    padding: 0 clamp(24px, 3.91vw, 40px);
+    bottom: clamp(40px, 5.86vw, 60px);
+  }
+
+  .moon {
+    width: clamp(350px, 48.83vw, 500px);
+    height: clamp(350px, 48.83vw, 500px);
+    right: clamp(-180px, -17.58vw, -150px);
+    top: clamp(180px, 19.53vw, 200px);
+  }
+
+  .blurBlue {
+    width: clamp(200px, 29.3vw, 300px);
+    height: clamp(300px, 43.95vw, 450px);
+    left: clamp(30px, 9.77vw, 100px);
+    top: clamp(-220px, -21.48vw, -200px);
+  }
+
+  .blurOrange {
+    width: clamp(200px, 29.3vw, 300px);
+    height: clamp(300px, 43.95vw, 450px);
+  }
+
+  .statsContainer {
+    gap: clamp(16px, 1.95vw, 20px);
+  }
+
+  .statCard {
+    width: auto;
+    flex: 1;
+    max-width: 564.32px;
+    min-width: 200px;
+    border-radius: clamp(45px, 5.86vw, 60px);
+    padding: clamp(20px, 2.34vw, 24px);
+  }
+
+  .statValue {
+    font-size: clamp(32px, 4.69vw, 48px);
+  }
+
+  .statLabel {
+    font-size: clamp(14px, 1.95vw, 20px);
+  }
+}
+
+@media (max-width: 900px) {
+  .content {
+    padding: 0 clamp(20px, 2.22vw, 24px);
+  }
+
+  .statistics {
+    padding: 0 clamp(20px, 2.22vw, 24px);
+    bottom: clamp(35px, 3.89vw, 40px);
+  }
+
+  .moon {
+    width: clamp(300px, 33.33vw, 400px);
+    height: clamp(300px, 33.33vw, 400px);
+    right: clamp(-150px, -16.67vw, -120px);
+  }
+
+  .blurBlue {
+    width: clamp(180px, 20vw, 220px);
+    height: clamp(270px, 30vw, 330px);
+    left: clamp(20px, 2.22vw, 40px);
+  }
+
+  .blurOrange {
+    width: clamp(180px, 20vw, 220px);
+    height: clamp(270px, 30vw, 330px);
+  }
+
+  .statCard {
+    border-radius: clamp(35px, 4.44vw, 45px);
+    padding: clamp(18px, 2.22vw, 24px);
+  }
+
+  .statValue {
+    font-size: clamp(28px, 3.33vw, 42px);
+  }
+
+  .statLabel {
+    font-size: clamp(13px, 1.67vw, 18px);
+  }
+}
+
+@media (max-width: 770px) {
+  .hero {
+    padding-top: clamp(120px, 15.58vw, 140px);
+    min-height: 100vh;
+    align-items: flex-start;
+  }
+
+  .content {
+    padding: 0 clamp(16px, 2.08vw, 24px);
+    max-width: 100%;
+    margin-top: clamp(20px, 2.6vw, 40px);
+  }
+
+  .projectsContent {
+    padding: 0 clamp(16px, 2.08vw, 24px);
+  }
+
+  .projectsTitle {
+    margin-bottom: clamp(24px, 3.13vw, 40px);
+  }
+
+  .projectsLogosContainer {
+    padding: 0 clamp(16px, 2.08vw, 24px);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .projectsLogoItem {
+    transform: translateY(50px);
+  }
+
+  .projectsContent.projectsVisible .projectsLogoItem {
+    transform: translateY(0);
+  }
+
+  .projectsLogo {
+    max-width: 150px;
+    max-height: 45px;
+  }
+
+  .title {
+    margin-bottom: clamp(24px, 3.13vw, 32px);
+  }
+
+  .subtitle {
+    font-size: clamp(14px, 2.08vw, 16px);
+    max-width: 100%;
+    margin-bottom: clamp(32px, 5.21vw, 40px);
+  }
+
+  .actions {
+    flex-direction: row;
+    align-items: center;
+    gap: clamp(16px, 3.13vw, 24px);
+    flex-wrap: wrap;
+  }
+
+  .statistics {
+    padding: 0 clamp(16px, 2.08vw, 24px);
+    bottom: clamp(30px, 5.21vw, 40px);
+  }
+
+  .statsContainer {
+    flex-direction: column;
+    gap: clamp(12px, 2.08vw, 16px);
+    justify-content: center;
+  }
+
+  .statCard {
+    width: 100%;
+    max-width: 564.32px;
+    height: auto;
+    min-height: clamp(160px, 24.74vw, 190px);
+    border-radius: clamp(32px, 5.21vw, 40px);
+    padding: clamp(24px, 4.17vw, 32px) clamp(16px, 3.13vw, 24px);
+    transform: translateY(100px);
+  }
+
+  .statistics.visible .statCard {
+    transform: translateY(0);
+  }
+
+  .statValue {
+    font-size: clamp(36px, 6.25vw, 48px);
+    margin-bottom: clamp(12px, 2.08vw, 16px);
+  }
+
+  .statLabel {
+    font-size: clamp(14px, 2.34vw, 18px);
+  }
+
+  .moon {
+    width: clamp(280px, 36.46vw, 350px);
+    height: clamp(280px, 36.46vw, 350px);
+    right: clamp(-140px, -15.63vw, -120px);
+    top: auto;
+    bottom: 0;
+    left: auto;
+  }
+
+  .blurBlue {
+    width: clamp(160px, 26.04vw, 200px);
+    height: clamp(240px, 39.06vw, 300px);
+    left: clamp(20px, 3.91vw, 30px);
+    top: clamp(-120px, -13.02vw, -100px);
+  }
+
+  .blurOrange {
+    width: clamp(160px, 26.04vw, 200px);
+    height: clamp(240px, 39.06vw, 300px);
+    top: auto;
+    bottom: clamp(-60px, -6.51vw, -50px);
+    left: clamp(-100px, -10.42vw, -80px);
+  }
+}
+
+@media (max-width: 600px) {
+  .content {
+    padding: 0 clamp(12px, 2vw, 16px);
+  }
+
+  .statistics {
+    padding: 0 clamp(12px, 2vw, 16px);
+    bottom: clamp(24px, 4vw, 32px);
+  }
+
+  .moon {
+    width: clamp(200px, 33.33vw, 280px);
+    height: clamp(200px, 33.33vw, 280px);
+    right: clamp(-100px, -16.67vw, -80px);
+  }
+
+  .blurBlue {
+    width: clamp(140px, 23.33vw, 180px);
+    height: clamp(200px, 33.33vw, 260px);
+    left: clamp(10px, 1.67vw, 20px);
+  }
+
+  .blurOrange {
+    width: clamp(140px, 23.33vw, 180px);
+    height: clamp(200px, 33.33vw, 260px);
+    left: clamp(-60px, -10vw, -50px);
+  }
+
+  .statCard {
+    border-radius: clamp(28px, 4.67vw, 32px);
+    padding: clamp(20px, 3.33vw, 24px) clamp(12px, 2vw, 16px);
+  }
+
+  .statValue {
+    font-size: clamp(32px, 6vw, 40px);
+  }
+
+  .statLabel {
+    font-size: clamp(12px, 2.67vw, 16px);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding-top: clamp(80px, 16.67vw, 100px);
+    min-height: 100vh;
+  }
+
+  .content {
+    padding: 0 clamp(12px, 2.5vw, 16px);
+  }
+
+  .projectsContent {
+    padding: 0 clamp(12px, 2.5vw, 16px);
+  }
+
+  .projectsTitle {
+    margin-bottom: clamp(20px, 4.17vw, 32px);
+  }
+
+  .projectsLogosContainer {
+    gap: clamp(20px, 4.17vw, 32px);
+    padding: 0 clamp(12px, 2.5vw, 16px);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .projectsLogoItem {
+    transform: translateY(50px);
+  }
+
+  .projectsContent.projectsVisible .projectsLogoItem {
+    transform: translateY(0);
+  }
+
+  .projectsLogo {
+    max-width: 120px;
+    max-height: 36px;
+  }
+
+  .title {
+    margin-bottom: clamp(20px, 4.17vw, 24px);
+  }
+
+  .subtitle {
+    font-size: clamp(12px, 2.92vw, 14px);
+    margin-bottom: clamp(24px, 6.67vw, 32px);
+    line-height: 140%;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: clamp(16px, 4.17vw, 20px);
+    width: 100%;
+  }
+
+  .statistics {
+    padding: 0 clamp(12px, 2.5vw, 16px);
+    bottom: clamp(20px, 4.17vw, 32px);
+  }
+
+  .statsContainer {
+    gap: clamp(10px, 2.08vw, 12px);
+  }
+
+  .statCard {
+    width: 100%;
+    max-width: 564.32px;
+    height: auto;
+    min-height: clamp(140px, 39.58vw, 190px);
+    border-radius: clamp(24px, 6.67vw, 32px);
+    padding: clamp(18px, 5vw, 24px) clamp(12px, 3.33vw, 16px);
+  }
+
+  .statValue {
+    font-size: clamp(28px, 7.5vw, 36px);
+    margin-bottom: clamp(10px, 2.5vw, 14px);
+  }
+
+  .statLabel {
+    font-size: clamp(11px, 3.33vw, 16px);
+    line-height: 120%;
+  }
+
+  .moon {
+    width: clamp(180px, 37.5vw, 250px);
+    height: clamp(180px, 37.5vw, 250px);
+    right: clamp(-90px, -18.75vw, -80px);
+    bottom: clamp(30px, 10.42vw, 50px);
+  }
+
+  .blurBlue {
+    width: clamp(120px, 31.25vw, 150px);
+    height: clamp(180px, 41.67vw, 200px);
+    left: clamp(10px, 4.17vw, 20px);
+    top: clamp(-60px, -12.5vw, -50px);
+  }
+
+  .blurOrange {
+    width: clamp(120px, 31.25vw, 150px);
+    height: clamp(180px, 41.67vw, 200px);
+    bottom: clamp(-10px, -2.08vw, 0);
+    left: clamp(-60px, -12.5vw, -50px);
+  }
+}
+
+@media (max-width: 360px) {
+  .hero {
+    padding-top: clamp(60px, 16.67vw, 80px);
+  }
+
+  .content {
+    padding: 0 12px;
+  }
+
+  .subtitle {
+    font-size: 12px;
+  }
+
+  .statistics {
+    padding: 0 12px;
+    bottom: 20px;
+  }
+
+  .statCard {
+    min-height: 140px;
+    padding: 16px 12px;
+    border-radius: 24px;
+  }
+
+  .statValue {
+    font-size: 24px;
+  }
+
+  .statLabel {
+    font-size: 11px;
+  }
+
+  .moon {
+    width: 150px;
+    height: 150px;
+    right: -60px;
+    bottom: 20px;
+  }
+
+  .blurBlue {
+    width: 100px;
+    height: 150px;
+    left: 10px;
+    top: -40px;
+  }
+
+  .blurOrange {
+    width: 100px;
+    height: 150px;
+    bottom: -10px;
+    left: -40px;
+  }
+}
+
+@media (max-height: 600px) and (orientation: landscape) {
+  .hero {
+    min-height: 100vh;
+    padding-top: clamp(60px, 10vh, 80px);
+  }
+
+  .content {
+    padding: 0 clamp(20px, 3.33vw, 40px);
+  }
+
+  .title {
+    margin-bottom: clamp(16px, 2.67vh, 24px);
+  }
+
+  .subtitle {
+    font-size: clamp(12px, 2vh, 16px);
+    margin-bottom: clamp(20px, 3.33vh, 32px);
+  }
+
+  .actions {
+    gap: clamp(12px, 2vw, 24px);
+  }
+
+  .statistics {
+    bottom: clamp(20px, 3.33vh, 40px);
+  }
+
+  .statCard {
+    min-height: clamp(120px, 20vh, 160px);
+    padding: clamp(16px, 2.67vh, 24px) clamp(12px, 2vw, 20px);
+  }
+
+  .statValue {
+    font-size: clamp(28px, 4.67vh, 40px);
+    margin-bottom: clamp(8px, 1.33vh, 12px);
+  }
+
+  .statLabel {
+    font-size: clamp(12px, 2vh, 16px);
+  }
+
+  .moon {
+    width: clamp(200px, 33.33vw, 300px);
+    height: clamp(200px, 33.33vw, 300px);
+  }
+
+  .blurBlue {
+    width: clamp(120px, 20vw, 180px);
+    height: clamp(180px, 30vw, 270px);
+  }
+
+  .blurOrange {
+    width: clamp(120px, 20vw, 180px);
+    height: clamp(180px, 30vw, 270px);
+  }
+}
+
+@media (max-width: 1024px) and (max-height: 768px) and (orientation: landscape) {
+  .statsContainer {
+    flex-direction: row;
+    gap: clamp(12px, 1.56vw, 16px);
+  }
+
+  .statCard {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
