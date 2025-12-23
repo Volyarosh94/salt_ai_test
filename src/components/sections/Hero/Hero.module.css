@@ -146,6 +146,17 @@
   opacity: 0;
 }
 
+.hero.aiSectionVisible .content {
+  transform: translateY(-150vh);
+  opacity: 0;
+}
+
+.hero.aiSectionVisible .statistics {
+  opacity: 0;
+  transform: translateY(-100vh);
+  pointer-events: none;
+}
+
 @media (max-width: 770px) {
   .hero.scrolled .content {
     transform: translateY(clamp(-5vh, -8vh, -10vh));

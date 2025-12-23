@@ -69,13 +69,13 @@ export function Hero() {
         setIsVisible(false);
       }
 
-      if (scrollProgress > 0.8) {
+      if (scrollProgress > 0.5 && scrollProgress < 0.8) {
         setIsProjectsVisible(true);
       } else {
         setIsProjectsVisible(false);
       }
 
-      if (scrollProgress > 0.8 && scrollProgress < 2.0) {
+      if (scrollProgress > 0.8 && scrollProgress < 1.4) {
         setIsAISectionVisible(true);
       } else {
         setIsAISectionVisible(false);
