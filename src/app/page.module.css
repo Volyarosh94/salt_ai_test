@@ -4,6 +4,6 @@
 
 .heroWrapper {
   position: relative;
-  min-height: 300vh;
+  min-height: 400vh; /* Increased to ensure table section is reachable */
 }
 

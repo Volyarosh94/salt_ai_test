@@ -1,0 +1,2 @@
+export { useHeroScroll } from './useHeroScroll';
+

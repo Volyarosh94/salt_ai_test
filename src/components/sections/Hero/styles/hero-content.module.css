@@ -1,0 +1,218 @@
+
+.content {
+  position: relative;
+  z-index: 10;
+  padding: 0 60px;
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 1;
+}
+
+.content.scrolled {
+  transform: translateY(clamp(-8vh, -10vh, -10vh));
+}
+
+.content.projectsVisible {
+  transform: translateY(-150vh);
+  opacity: 0;
+}
+
+.content.aiSectionVisible {
+  transform: translateY(-150vh);
+  opacity: 0;
+}
+
+.content.tableVisible {
+  transform: translateY(-150vh);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.title {
+  margin-bottom: 32px;
+  display: block;
+  max-width: none;
+  overflow: visible;
+}
+
+.titleLine {
+  display: block;
+  white-space: nowrap;
+  overflow: visible;
+}
+
+.subtitle {
+  font-family: var(--font-family-primary);
+  font-size: clamp(14px, 0.94vw, 18px);
+  font-weight: 400;
+  line-height: 160%;
+  color: var(--color-text-primary);
+  max-width: clamp(500px, 41.67vw, 800px);
+  margin-bottom: clamp(24px, 2.08vw, 40px);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 1.67vw, 32px);
+  flex-wrap: nowrap;
+}
+
+.tryNow {
+  font-size: clamp(12px, 0.83vw, 16px);
+  font-weight: 400;
+}
+
+@media (max-width: 1600px) {
+  .content {
+    padding: 0 clamp(40px, 3.75vw, 60px);
+  }
+}
+
+@media (max-width: 1200px) {
+  .content {
+    padding: 0 clamp(32px, 3.33vw, 40px);
+  }
+}
+
+@media (max-width: 1024px) {
+  .content {
+    padding: 0 clamp(24px, 3.91vw, 40px);
+  }
+
+  .subtitle {
+    font-size: clamp(16px, 1.76vw, 18px);
+    max-width: clamp(500px, 65.63vw, 800px);
+  }
+
+  .actions {
+    justify-content: center;
+    gap: clamp(20px, 3.13vw, 32px);
+    flex-wrap: nowrap;
+  }
+}
+
+@media (max-width: 900px) {
+  .content {
+    padding: 0 clamp(20px, 2.22vw, 24px);
+  }
+}
+
+@media (max-width: 770px) {
+  .content.scrolled {
+    transform: translateY(clamp(-5vh, -8vh, -10vh));
+  }
+
+  .content {
+    padding: 0 clamp(16px, 2.08vw, 24px);
+    max-width: 100%;
+    margin-top: clamp(20px, 2.6vw, 40px);
+  }
+
+  .title {
+    margin-bottom: clamp(24px, 3.13vw, 32px);
+  }
+
+  .subtitle {
+    font-size: clamp(14px, 2.08vw, 16px);
+    max-width: 100%;
+    margin-bottom: clamp(32px, 5.21vw, 40px);
+  }
+
+  .actions {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(16px, 3.13vw, 24px);
+    flex-wrap: nowrap;
+  }
+}
+
+@media (max-width: 720px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 clamp(12px, 2vw, 16px);
+  }
+}
+
+@media (max-width: 480px) {
+  .content.scrolled {
+    transform: translateY(clamp(-3vh, -5vh, -8vh));
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 clamp(12px, 2.5vw, 16px);
+  }
+
+  .title {
+    margin-bottom: clamp(20px, 4.17vw, 24px);
+  }
+
+  .subtitle {
+    font-size: clamp(12px, 2.92vw, 14px);
+    margin-bottom: clamp(24px, 6.67vw, 32px);
+    line-height: 140%;
+  }
+
+  .actions {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(16px, 4.17vw, 20px);
+    width: 100%;
+    flex-wrap: nowrap;
+  }
+}
+
+@media (max-width: 360px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 12px;
+  }
+
+  .subtitle {
+    font-size: 12px;
+  }
+}
+
+@media (max-height: 600px) and (orientation: landscape) {
+  .content {
+    padding: 0 clamp(20px, 3.33vw, 40px);
+  }
+
+  .title {
+    margin-bottom: clamp(16px, 2.67vh, 24px);
+  }
+
+  .subtitle {
+    font-size: clamp(12px, 2vh, 16px);
+    margin-bottom: clamp(20px, 3.33vh, 32px);
+  }
+
+  .actions {
+    justify-content: center;
+    gap: clamp(12px, 2vw, 24px);
+    flex-wrap: nowrap;
+  }
+}

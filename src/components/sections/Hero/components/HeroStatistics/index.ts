@@ -1,0 +1,2 @@
+export { HeroStatistics } from './HeroStatistics';
+

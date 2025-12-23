@@ -1,0 +1,339 @@
+
+.background {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.moonLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.moon {
+  position: absolute;
+  width: 1016px;
+  height: 1016px;
+  top: 100.02px;
+  left: 970.02px;
+  object-fit: contain;
+  pointer-events: none;
+  transition: top 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.moon.projectsVisible {
+  top: 0.02px;
+}
+
+.moon.tableVisible {
+  top: clamp(-500px, -100vh, -150px);
+  transition: top 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.blurLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  isolation: isolate;
+}
+
+.blurBlue {
+  position: absolute;
+  width: clamp(300px, 26.29vw, 504.81px);
+  height: clamp(450px, 41.45vw, 795.74px);
+  top: clamp(-200px, -10.42vw, -100px);
+  left: clamp(200px, 18.27vw, 350.83px);
+  object-fit: contain;
+  pointer-events: none;
+  transition: top 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.blurBlue.tableVisible {
+  top: clamp(-400px, -30vh, -300px);
+  transform: translateY(-50px);
+}
+
+.blurOrange {
+  position: absolute;
+  width: clamp(300px, 26.29vw, 504.81px);
+  height: clamp(450px, 41.45vw, 795.74px);
+  top: clamp(400px, 28.13vw, 540px);
+  left: clamp(-50px, -1.04vw, -20px);
+  object-fit: contain;
+  pointer-events: none;
+  transition: top 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.blurOrange.tableVisible {
+  top: clamp(200px, 15vh, 300px);
+  transform: translateY(-100px);
+}
+
+@media (max-width: 1920px) {
+  .moon {
+    width: clamp(600px, 52.92vw, 1016px);
+    height: clamp(600px, 52.92vw, 1016px);
+    left: clamp(600px, 50.52vw, 970px);
+  }
+
+  .blurBlue {
+    width: clamp(300px, 26.29vw, 504.81px);
+    height: clamp(450px, 41.45vw, 795.74px);
+  }
+
+  .blurOrange {
+    width: clamp(300px, 26.29vw, 504.81px);
+    height: clamp(450px, 41.45vw, 795.74px);
+  }
+}
+
+@media (max-width: 1600px) {
+  .moon {
+    width: clamp(500px, 50vw, 800px);
+    height: clamp(500px, 50vw, 800px);
+    left: auto;
+    right: clamp(-300px, -12.5vw, -200px);
+  }
+
+  .blurBlue {
+    width: clamp(350px, 31.25vw, 450px);
+    height: clamp(525px, 46.88vw, 675px);
+    left: clamp(150px, 12.5vw, 250px);
+  }
+
+  .blurOrange {
+    width: clamp(350px, 31.25vw, 450px);
+    height: clamp(525px, 46.88vw, 675px);
+  }
+}
+
+@media (max-width: 1400px) {
+  .moon.projectsVisible {
+    top: clamp(-50px, -3.57vw, 0px);
+  }
+  
+  .moon.tableVisible {
+    top: clamp(-250px, -25vh, -200px);
+  }
+  
+  .blurBlue.tableVisible {
+    top: clamp(-450px, -35vh, -350px);
+  }
+  
+  .blurOrange.tableVisible {
+    top: clamp(150px, 12vh, 250px);
+  }
+
+  .blurBlue {
+    width: clamp(300px, 28.57vw, 400px);
+    height: clamp(450px, 42.86vw, 600px);
+    left: clamp(100px, 14.29vw, 200px);
+  }
+
+  .moon {
+    width: clamp(450px, 50vw, 700px);
+    height: clamp(450px, 50vw, 700px);
+    right: clamp(-350px, -17.86vw, -250px);
+    top: clamp(100px, 10.71vw, 150px);
+  }
+
+  .blurOrange {
+    width: clamp(300px, 28.57vw, 400px);
+    height: clamp(450px, 42.86vw, 600px);
+  }
+}
+
+@media (max-width: 1200px) {
+  .moon {
+    width: clamp(400px, 41.67vw, 500px);
+    height: clamp(400px, 41.67vw, 500px);
+    right: clamp(-200px, -12.5vw, -150px);
+    top: clamp(150px, 16.67vw, 200px);
+  }
+
+  .blurBlue {
+    width: clamp(250px, 25vw, 300px);
+    height: clamp(375px, 37.5vw, 450px);
+    left: clamp(50px, 8.33vw, 100px);
+    top: clamp(-250px, -20.83vw, -200px);
+  }
+
+  .blurOrange {
+    width: clamp(250px, 25vw, 300px);
+    height: clamp(375px, 37.5vw, 450px);
+  }
+}
+
+@media (max-width: 1024px) {
+  .moon.projectsVisible {
+    top: clamp(-50px, -4.88vw, 0px);
+  }
+  
+  .moon.tableVisible {
+    top: clamp(-200px, -30vh, -150px);
+  }
+  
+  .blurBlue.tableVisible {
+    top: clamp(-400px, -40vh, -300px);
+  }
+  
+  .blurOrange.tableVisible {
+    top: clamp(100px, 10vh, 200px);
+  }
+
+  .moon {
+    width: clamp(350px, 48.83vw, 500px);
+    height: clamp(350px, 48.83vw, 500px);
+    right: clamp(-180px, -17.58vw, -150px);
+    top: clamp(180px, 19.53vw, 200px);
+  }
+
+  .blurBlue {
+    width: clamp(200px, 29.3vw, 300px);
+    height: clamp(300px, 43.95vw, 450px);
+    left: clamp(30px, 9.77vw, 100px);
+    top: clamp(-220px, -21.48vw, -200px);
+  }
+
+  .blurOrange {
+    width: clamp(200px, 29.3vw, 300px);
+    height: clamp(300px, 43.95vw, 450px);
+  }
+}
+
+@media (max-width: 900px) {
+  .moon {
+    width: clamp(300px, 33.33vw, 400px);
+    height: clamp(300px, 33.33vw, 400px);
+    right: clamp(-150px, -16.67vw, -120px);
+  }
+
+  .blurBlue {
+    width: clamp(180px, 20vw, 220px);
+    height: clamp(270px, 30vw, 330px);
+    left: clamp(20px, 2.22vw, 40px);
+  }
+
+  .blurOrange {
+    width: clamp(180px, 20vw, 220px);
+    height: clamp(270px, 30vw, 330px);
+  }
+}
+
+@media (max-width: 770px) {
+  .moon.projectsVisible {
+    top: auto;
+    bottom: clamp(50px, 6.51vw, 100px);
+  }
+
+  .moon {
+    width: clamp(280px, 36.46vw, 350px);
+    height: clamp(280px, 36.46vw, 350px);
+    right: clamp(-140px, -15.63vw, -120px);
+    top: auto;
+    bottom: 0;
+    left: auto;
+  }
+
+  .blurBlue {
+    width: clamp(160px, 26.04vw, 200px);
+    height: clamp(240px, 39.06vw, 300px);
+    left: clamp(20px, 3.91vw, 30px);
+    top: clamp(-120px, -13.02vw, -100px);
+  }
+
+  .blurOrange {
+    width: clamp(160px, 26.04vw, 200px);
+    height: clamp(240px, 39.06vw, 300px);
+    top: auto;
+    bottom: clamp(-60px, -6.51vw, -50px);
+    left: clamp(-100px, -10.42vw, -80px);
+  }
+}
+
+@media (max-width: 600px) {
+  .moon {
+    width: clamp(200px, 33.33vw, 280px);
+    height: clamp(200px, 33.33vw, 280px);
+    right: clamp(-100px, -16.67vw, -80px);
+  }
+
+  .blurBlue {
+    width: clamp(140px, 23.33vw, 180px);
+    height: clamp(200px, 33.33vw, 260px);
+    left: clamp(10px, 1.67vw, 20px);
+  }
+
+  .blurOrange {
+    width: clamp(140px, 23.33vw, 180px);
+    height: clamp(200px, 33.33vw, 260px);
+    left: clamp(-60px, -10vw, -50px);
+  }
+}
+
+@media (max-width: 480px) {
+  .moon {
+    width: clamp(180px, 37.5vw, 250px);
+    height: clamp(180px, 37.5vw, 250px);
+    right: clamp(-90px, -18.75vw, -80px);
+    bottom: clamp(30px, 10.42vw, 50px);
+  }
+
+  .blurBlue {
+    width: clamp(120px, 31.25vw, 150px);
+    height: clamp(180px, 41.67vw, 200px);
+    left: clamp(10px, 4.17vw, 20px);
+    top: clamp(-60px, -12.5vw, -50px);
+  }
+
+  .blurOrange {
+    width: clamp(120px, 31.25vw, 150px);
+    height: clamp(180px, 41.67vw, 200px);
+    bottom: clamp(-10px, -2.08vw, 0);
+    left: clamp(-60px, -12.5vw, -50px);
+  }
+}
+
+@media (max-width: 360px) {
+  .moon {
+    width: 150px;
+    height: 150px;
+    right: -60px;
+    bottom: 20px;
+  }
+
+  .blurBlue {
+    width: 100px;
+    height: 150px;
+    left: 10px;
+    top: -40px;
+  }
+
+  .blurOrange {
+    width: 100px;
+    height: 150px;
+    bottom: -10px;
+    left: -40px;
+  }
+}
+
+@media (max-height: 600px) and (orientation: landscape) {
+  .moon {
+    width: clamp(200px, 33.33vw, 300px);
+    height: clamp(200px, 33.33vw, 300px);
+  }
+
+  .blurBlue {
+    width: clamp(120px, 20vw, 180px);
+    height: clamp(180px, 30vw, 270px);
+  }
+
+  .blurOrange {
+    width: clamp(120px, 20vw, 180px);
+    height: clamp(180px, 30vw, 270px);
+  }
+}
