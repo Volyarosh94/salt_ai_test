@@ -21,9 +21,40 @@ const projects = [
   { name: 'Telegram', logo: '/images/telegram.png', alt: 'Telegram logo' },
 ];
 
+type TrendType = 'up' | 'down' | 'neutral';
+
+interface LeaderboardModel {
+  rank: number;
+  name: string;
+  average: string;
+  arc: string;
+  hellaswag: string;
+  mmlu: string;
+  truthfulqa: string;
+  winogrande: string;
+  gsm8k: string;
+  earnings: string;
+  trend: TrendType;
+}
+
+const leaderboardData: LeaderboardModel[] = [
+  { rank: 1, name: 'Model_Name123', average: '81.22', arc: '81.22', hellaswag: '81.22', mmlu: '81.22', truthfulqa: '81.22', winogrande: '81.22', gsm8k: '81.22', earnings: '2,854,004', trend: 'neutral' },
+  { rank: 2, name: 'Model_Name123', average: '81.22', arc: '81.22', hellaswag: '81.22', mmlu: '81.22', truthfulqa: '81.22', winogrande: '81.22', gsm8k: '81.22', earnings: '2,854,004', trend: 'up' },
+  { rank: 3, name: 'Model_Name123', average: '81.22', arc: '81.22', hellaswag: '81.22', mmlu: '81.22', truthfulqa: '81.22', winogrande: '81.22', gsm8k: '81.22', earnings: '2,854,004', trend: 'down' },
+  { rank: 4, name: 'Model_Name123', average: '81.22', arc: '81.22', hellaswag: '81.22', mmlu: '81.22', truthfulqa: '81.22', winogrande: '81.22', gsm8k: '81.22', earnings: '2,854,004', trend: 'neutral' },
+  { rank: 5, name: 'Model_Name123', average: '81.22', arc: '81.22', hellaswag: '81.22', mmlu: '81.22', truthfulqa: '81.22', winogrande: '81.22', gsm8k: '81.22', earnings: '2,854,004', trend: 'up' },
+  { rank: 6, name: 'Model_Name123', average: '81.22', arc: '81.22', hellaswag: '81.22', mmlu: '81.22', truthfulqa: '81.22', winogrande: '81.22', gsm8k: '81.22', earnings: '2,854,004', trend: 'up' },
+  { rank: 7, name: 'Model_Name123', average: '81.22', arc: '81.22', hellaswag: '81.22', mmlu: '81.22', truthfulqa: '81.22', winogrande: '81.22', gsm8k: '81.22', earnings: '2,854,004', trend: 'down' },
+  { rank: 8, name: 'Model_Name123', average: '81.22', arc: '81.22', hellaswag: '81.22', mmlu: '81.22', truthfulqa: '81.22', winogrande: '81.22', gsm8k: '81.22', earnings: '2,854,004', trend: 'neutral' },
+  { rank: 9, name: 'Model_Name123', average: '81.22', arc: '81.22', hellaswag: '81.22', mmlu: '81.22', truthfulqa: '81.22', winogrande: '81.22', gsm8k: '81.22', earnings: '2,854,004', trend: 'down' },
+  { rank: 10, name: 'Model_Name123', average: '81.22', arc: '81.22', hellaswag: '81.22', mmlu: '81.22', truthfulqa: '81.22', winogrande: '81.22', gsm8k: '81.22', earnings: '2,854,004', trend: 'neutral' },
+];
+
 export function Hero() {
   const [isVisible, setIsVisible] = useState(false);
+  const [isTableVisible, setIsTableVisible] = useState(false);
   const [isProjectsVisible, setIsProjectsVisible] = useState(false);
+  const [isAISectionVisible, setIsAISectionVisible] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -43,6 +74,18 @@ export function Hero() {
       } else {
         setIsProjectsVisible(false);
       }
+
+      if (scrollProgress > 0.8 && scrollProgress < 1.8) {
+        setIsAISectionVisible(true);
+      } else {
+        setIsAISectionVisible(false);
+      }
+
+      if (scrollProgress > 1.4) {
+        setIsTableVisible(true);
+      } else {
+        setIsTableVisible(false);
+      }
     };
 
     handleScroll();
@@ -53,7 +96,7 @@ export function Hero() {
   return (
     <section 
       ref={heroRef} 
-      className={`${styles.hero} ${isVisible ? styles.scrolled : ''} ${isProjectsVisible ? styles.projectsVisible : ''}`} 
+      className={`${styles.hero} ${isVisible ? styles.scrolled : ''} ${isTableVisible ? styles.tableVisible : ''} ${isProjectsVisible ? styles.projectsVisible : ''} ${isAISectionVisible ? styles.aiSectionVisible : ''}`} 
       aria-labelledby="hero-title"
     >
       <div className={styles.background} aria-hidden="true">
@@ -148,6 +191,113 @@ export function Hero() {
                   className={styles.projectsLogo}
                   unoptimized
                 />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className={`${styles.aiSection} ${isAISectionVisible ? styles.visible : ''}`}>
+        <div className={styles.aiContent}>
+          <div className={styles.aiTextContent}>
+            <h2 className={styles.aiTitle}>
+              Crowdsourcing our collective intelligence to build the best AI
+            </h2>
+            <p className={styles.aiDescription}>
+              Open source AI has been lagging behind the likes of Google and OpenAI by billions of dollars. Salt aims to solve that by rewarding open source developers who contribute to the democratization of AI. We run competitions between AI models to find and reward the best AI models. As a result, our users will be able to access the latest cutting edge AI models.
+            </p>
+            <GradientButton
+              variant="outline"
+              size="lg"
+              aria-label="Use The Cutting Edge AI"
+            >
+              Use The Cutting Edge AI
+            </GradientButton>
+          </div>
+        </div>
+      </div>
+
+      <div className={`${styles.leaderboardSection} ${isTableVisible ? styles.visible : ''}`}>
+        <div className={styles.leaderboardHeader}>
+          <h2 className={styles.leaderboardTitle}>LLM Leaderboard</h2>
+          <GradientButton
+            variant="outline"
+            size="md"
+            aria-label="Submit your model"
+          >
+            Submit your model
+          </GradientButton>
+        </div>
+        <p className={styles.leaderboardSubtitle}>
+          We evaluate LLMs on key benchmarks using the Eleuther AI, a framework to test LLMs on a large number of different evaluation tasks. The higher the score, the better the LLM.
+        </p>
+        <div className={styles.tableWrapper}>
+          <div className={styles.rocketContainer}>
+            <div className={styles.rocketImageWrapper}>
+              <svg
+                width="60"
+                height="200"
+                viewBox="0 0 60 200"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className={styles.rocketImg}
+              >
+                <path
+                  d="M30 10 L35 50 L30 60 L25 50 Z"
+                  fill="#C0C0C0"
+                  stroke="#999"
+                  strokeWidth="1"
+                />
+                <rect x="25" y="50" width="10" height="80" fill="#C0C0C0" />
+                <path
+                  d="M20 120 L25 130 L25 140 L20 150 Z"
+                  fill="#C0C0C0"
+                />
+                <path
+                  d="M40 120 L35 130 L35 140 L40 150 Z"
+                  fill="#C0C0C0"
+                />
+                <ellipse cx="30" cy="180" rx="8" ry="20" fill="#FF4A59" opacity="0.8" />
+              </svg>
+            </div>
+            <div className={styles.rocketBeam}></div>
+          </div>
+          <div className={styles.table}>
+            <div className={styles.tableHeader}>
+              <div>#</div>
+              <div>Model Name</div>
+              <div>Average</div>
+              <div>ARC</div>
+              <div>HellaSwag</div>
+              <div>MMLU</div>
+              <div>TruthfulQA</div>
+              <div>Winogrande</div>
+              <div>GSM8K</div>
+              <div>Earnings</div>
+            </div>
+            {leaderboardData.map((model) => (
+              <div key={model.rank} className={styles.tableRow}>
+                <div>
+                  {model.rank}
+                  {model.trend === 'up' && (
+                    <span className={styles.trendIcon} style={{ color: '#4CAF50' }}>↑</span>
+                  )}
+                  {model.trend === 'down' && (
+                    <span className={styles.trendIcon} style={{ color: '#F44336' }}>↓</span>
+                  )}
+                  {model.trend === 'neutral' && (
+                    <span className={styles.trendIcon} style={{ color: '#999' }}>—</span>
+                  )}
+                </div>
+                <div>{model.name}</div>
+                <div>{model.average}</div>
+                <div>{model.arc}</div>
+                <div>{model.hellaswag}</div>
+                <div>{model.mmlu}</div>
+                <div>{model.truthfulqa}</div>
+                <div>{model.winogrande}</div>
+                <div>{model.gsm8k}</div>
+                <div>{model.earnings}</div>
               </div>
             ))}
           </div>
