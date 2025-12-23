@@ -146,7 +146,7 @@
   display: flex;
   align-items: center;
   gap: clamp(16px, 1.67vw, 32px);
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .tryNow {
@@ -497,6 +497,7 @@
 
   .actions {
     gap: clamp(20px, 3.13vw, 32px);
+    flex-wrap: nowrap;
   }
 
   .statistics {
@@ -640,29 +641,21 @@
     flex-direction: row;
     align-items: center;
     gap: clamp(16px, 3.13vw, 24px);
-    flex-wrap: wrap;
-  }
-
-  .statistics {
-    padding: 0 clamp(16px, 2.08vw, 24px);
-    bottom: clamp(30px, 5.21vw, 40px);
+    flex-wrap: nowrap;
   }
 
   .statsContainer {
+    display: flex;
     flex-direction: column;
+    align-items: center;
     gap: clamp(12px, 2.08vw, 16px);
     justify-content: center;
   }
-
   .statCard {
     width: 100%;
-    max-width: 564.32px;
-    height: auto;
-    min-height: clamp(160px, 24.74vw, 190px);
-    border-radius: clamp(32px, 5.21vw, 40px);
-    padding: clamp(24px, 4.17vw, 32px) clamp(16px, 3.13vw, 24px);
-    transform: translateY(100px);
+    max-width: 320px;
   }
+  
 
   .statistics.visible .statCard {
     transform: translateY(0);
@@ -702,14 +695,77 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 720px) {
   .content {
-    padding: 0 clamp(12px, 2vw, 16px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .statsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(12px, 2.08vw, 16px);
+    justify-content: center;
+  }
+  .statCard {
+    width: 100%;
+    max-width: 320px;
   }
 
   .statistics {
+    width: 100%;
+    margin-top: clamp(220px, 6vw, 40px);
+    margin-left: auto;
+    margin-right: auto;
+    bottom: unset;
+    left: 0;
+    right: 0;
+    transform: none;
+  }
+  .statsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(12px, 2.08vw, 16px);
+  }
+  .statCard {
+    width: 100%;
+    max-width: 320px;
+  }
+} 
+
+@media (max-width: 600px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     padding: 0 clamp(12px, 2vw, 16px);
-    bottom: clamp(24px, 4vw, 32px);
+  }
+
+  .statsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(12px, 2.08vw, 16px);
+  }
+  .statCard {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .statistics {
+    width: 100%;
+    margin-top: clamp(220px, 6vw, 40px);
+    margin-left: auto;
+    margin-right: auto;
+    bottom: unset;
+    left: 0;
+    right: 0;
+    transform: none;
+    padding: 0 clamp(12px, 2vw, 16px);
   }
 
   .moon {
@@ -732,7 +788,7 @@
 
   .statCard {
     border-radius: clamp(28px, 4.67vw, 32px);
-    padding: clamp(20px, 3.33vw, 24px) clamp(12px, 2vw, 16px);
+    padding: clamp(16px, 2.67vw, 20px) clamp(10px, 1.67vw, 14px);
   }
 
   .statValue {
@@ -751,6 +807,10 @@
   }
 
   .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     padding: 0 clamp(12px, 2.5vw, 16px);
   }
 
@@ -793,28 +853,34 @@
   }
 
   .actions {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
     gap: clamp(16px, 4.17vw, 20px);
     width: 100%;
+    flex-wrap: nowrap;
   }
 
   .statistics {
+    width: 100%;
+    margin-top: clamp(180px, 6vw, 40px);
+    margin-left: auto;
+    margin-right: auto;
+    bottom: unset;
+    left: 0;
+    right: 0;
+    transform: none;
     padding: 0 clamp(12px, 2.5vw, 16px);
-    bottom: clamp(20px, 4.17vw, 32px);
   }
 
   .statsContainer {
-    gap: clamp(10px, 2.08vw, 12px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(12px, 2.08vw, 16px);
   }
-
   .statCard {
     width: 100%;
-    max-width: 564.32px;
-    height: auto;
-    min-height: clamp(140px, 39.58vw, 190px);
-    border-radius: clamp(24px, 6.67vw, 32px);
-    padding: clamp(18px, 5vw, 24px) clamp(12px, 3.33vw, 16px);
+    max-width: 320px;
   }
 
   .statValue {
@@ -855,6 +921,10 @@
   }
 
   .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     padding: 0 12px;
   }
 
@@ -863,14 +933,26 @@
   }
 
   .statistics {
+    width: 100%;
+    margin-top: clamp(220px, 6vw, 40px);
+    margin-left: auto;
+    margin-right: auto;
+    bottom: unset;
+    left: 0;
+    right: 0;
+    transform: none;
     padding: 0 12px;
-    bottom: 20px;
   }
 
+  .statsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(12px, 2.08vw, 16px);
+  }
   .statCard {
-    min-height: 140px;
-    padding: 16px 12px;
-    border-radius: 24px;
+    width: 100%;
+    max-width: 320px;
   }
 
   .statValue {
@@ -924,6 +1006,7 @@
 
   .actions {
     gap: clamp(12px, 2vw, 24px);
+    flex-wrap: nowrap;
   }
 
   .statistics {
@@ -932,7 +1015,7 @@
 
   .statCard {
     min-height: clamp(120px, 20vh, 160px);
-    padding: clamp(16px, 2.67vh, 24px) clamp(12px, 2vw, 20px);
+    padding: clamp(12px, 2vh, 18px) clamp(10px, 1.67vw, 16px);
   }
 
   .statValue {
