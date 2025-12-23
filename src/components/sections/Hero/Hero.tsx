@@ -75,7 +75,7 @@ export function Hero() {
         setIsProjectsVisible(false);
       }
 
-      if (scrollProgress > 0.8 && scrollProgress < 1.8) {
+      if (scrollProgress > 0.8 && scrollProgress < 2.0) {
         setIsAISectionVisible(true);
       } else {
         setIsAISectionVisible(false);
@@ -232,36 +232,6 @@ export function Hero() {
           We evaluate LLMs on key benchmarks using the Eleuther AI, a framework to test LLMs on a large number of different evaluation tasks. The higher the score, the better the LLM.
         </p>
         <div className={styles.tableWrapper}>
-          <div className={styles.rocketContainer}>
-            <div className={styles.rocketImageWrapper}>
-              <svg
-                width="60"
-                height="200"
-                viewBox="0 0 60 200"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className={styles.rocketImg}
-              >
-                <path
-                  d="M30 10 L35 50 L30 60 L25 50 Z"
-                  fill="#C0C0C0"
-                  stroke="#999"
-                  strokeWidth="1"
-                />
-                <rect x="25" y="50" width="10" height="80" fill="#C0C0C0" />
-                <path
-                  d="M20 120 L25 130 L25 140 L20 150 Z"
-                  fill="#C0C0C0"
-                />
-                <path
-                  d="M40 120 L35 130 L35 140 L40 150 Z"
-                  fill="#C0C0C0"
-                />
-                <ellipse cx="30" cy="180" rx="8" ry="20" fill="#FF4A59" opacity="0.8" />
-              </svg>
-            </div>
-            <div className={styles.rocketBeam}></div>
-          </div>
           <div className={styles.table}>
             <div className={styles.tableHeader}>
               <div>#</div>
